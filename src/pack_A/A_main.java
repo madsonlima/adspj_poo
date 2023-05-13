@@ -8,12 +8,12 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.Iterator;
+//import java.util.List;
 import java.util.Scanner;
 
-import entities.Socio;
+//import entities.Socio;
 
 public class A_main {
 
@@ -22,21 +22,27 @@ public class A_main {
 		Scanner sc = new Scanner(System.in);
 		
 // Caminhos ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-		
+		/*
+		Caminho caso aberto em alguma ide no windows. No github codespaces não é preciso usar "\\".
+
 		String pathWorkbench = ".\\.\\";
 			String pathFolder_dataframes = pathWorkbench + "\\dataframes";
 				String pathFolder_cadastros = pathFolder_dataframes + "\\cadastros";
 				String path_allcad = pathFolder_dataframes + "\\allcad.csv";			//file
+		*/
+		
+		String pathWorkbench = "././";
+			String pathFolder_dataframes = pathWorkbench + "/dataframes";
+				String pathFolder_cadastros = pathFolder_dataframes + "/cadastros";
+				String path_allcad = pathFolder_dataframes + "/allcad.csv";			//file
 				
 		String pathSourceFile = path_allcad;
-		
-		//String pathSourceFolder = "C:\\Users\\202208687334\\Desktop\\dataframes\\cadastros\\Cadastros.csv"; // Obtém o caminho desprezando o nome do arquivo.
-			
-		File csvCadastro = new File(pathSourceFile);					// Arquivo paratrabalhar.
+
+		File csvCadastro = new File(pathSourceFile);					// Arquivo para trabalhar.
 		System.out.println("Arquivo identificado: " + csvCadastro);
 		
 		
-// Confirmar exist�ncia do dataframe ---------------------------------------------------------------------------------------------------------------------------------------------------------
+// Confirmar existência do dataframe ---------------------------------------------------------------------------------------------------------------------------------------------------------
 		
 		try {
 			
@@ -131,7 +137,6 @@ public class A_main {
 			
 		}
 
-		
 		sc.close();
 
 	}
