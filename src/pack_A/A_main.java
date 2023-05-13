@@ -87,7 +87,7 @@ public class A_main {
 		arrayColunas[0] = "ID";						// Intância de cada coluna do dataframe.
 		arrayColunas[1] = "Nome";
 		arrayColunas[2] = "Data de nascimento";
-		arrayColunas[3] = "Estado e Cidade";
+		arrayColunas[3] = "Estado, Cidade";
 		arrayColunas[4] = "Telefone";
 		arrayColunas[5] = "Email";
 		arrayColunas[6] = "Github";
@@ -97,27 +97,53 @@ public class A_main {
 		
 		try (BufferedReader br = new BufferedReader(new FileReader(pathSourceFile))) {
 			
+			for (String celula: arrayColunas) {
+
+				if (celula == arrayColunas[arrayColunas.length - 1]) {					// Imprime o cabeçalho do dataframe.
+
+					System.out.println(" | " + String.format("%10s", celula) + " |");	// Se for a última célula.
+					
+				} else if (celula == arrayColunas[2]) {
+
+					System.out.print(" | " + String.format("%18s", celula));			// Se for "Data de nascimento".
+
+				} else {
+											
+					System.out.print(" | " + String.format("%10s", celula));			// Se não for a última célula.
+					
+				}
+
+			}
+
 			String[][] arraySF = new String[arrayColunas.length][arrayLinhas];
 			
 			String	linhaCsv	= br.readLine();
 			int		lin			= 0;
 			int		col			= 0;
-					
+
 			while ((linhaCsv != null) && (lin < arrayLinhas)) {	// (lin < arrayLinhas) pode ser deletado?
-				
+
 				String[] celulasLinha = linhaCsv.split(";");	// Da split em cada linha no passo do while.
 				
 				for (String celula: celulasLinha) {		// A cada laço do for, celula recebe 1 dos valores splitados em celulasLinha.
 					
 					arraySF[lin][col] = celula;			// Esse valor é inserido na posição correspondente no array.
 					
-					if (col < (arrayColunas.length) - 1) {
+					if (col == 2) {
 
-						System.out.print(" | " + String.format("%10s", arraySF[lin][col]));
+						System.out.print(" | " + String.format("%18s", arraySF[lin][col]));				// Se for a coluna 3, "Data de nascimento".
 						
+					} else if (col == 3) {
+
+						System.out.print(" | " + String.format("%14s", arraySF[lin][col]));				// Se for a coluna 4, "Estado, Cidade".
+
+					} else if (col < (arrayColunas.length) - 1) {
+
+						System.out.print(" | " + String.format("%10s", arraySF[lin][col]));				// Se não for a última coluna.
+	
 					} else {
 						
-						System.out.println(" | " + String.format("%10s", arraySF[lin][col]) + " |");
+						System.out.println(" | " + String.format("%10s", arraySF[lin][col]) + " |");	// Se for a última coluna.
 						
 					}
 					
