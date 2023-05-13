@@ -17,7 +17,7 @@ import entities.Socio;
 
 public class A_main {
 
-	public static void main(String[] args) /*throws ParseException */{		// Alterar tipo da variável. //import java.text.ParseException;
+	public static void main(String[] args) /*throws ParseException */{		// Alterar tipo da variÃ¡vel. //import java.text.ParseException;
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -30,21 +30,21 @@ public class A_main {
 				
 		String pathSourceFile = path_allcad;
 		
-		//String pathSourceFolder = "C:\\Users\\202208687334\\Desktop\\dataframes\\cadastros\\Cadastros.csv"; // Obtém o caminho desprezando o nome do arquivo.
+		//String pathSourceFolder = "C:\\Users\\202208687334\\Desktop\\dataframes\\cadastros\\Cadastros.csv"; // ObtÃ©m o caminho desprezando o nome do arquivo.
 			
 		File csvCadastro = new File(pathSourceFile);					// Arquivo paratrabalhar.
 		System.out.println("Arquivo identificado: " + csvCadastro);
 		
 		
-// Confirmar existência do dataframe ---------------------------------------------------------------------------------------------------------------------------------------------------------
+// Confirmar existï¿½ncia do dataframe ---------------------------------------------------------------------------------------------------------------------------------------------------------
 		
 		try {
 			
-			BufferedReader br = new BufferedReader(new FileReader(pathSourceFile));	// Lê e fecha o arquivo para confirmar que ele existe.
+			BufferedReader br = new BufferedReader(new FileReader(pathSourceFile));	// LÃª e fecha o arquivo para confirmar que ele existe.
 			br.close();
 			System.out.println("Arquivo lido com sucesso");
 			
-		} catch (Exception e) {														// Caso não, entra na exceção para cariar a pasta e o arquivo.
+		} catch (Exception e) {														// Caso nÃ£o, entra na exceÃ§Ã£o para cariar a pasta e o arquivo.
 			try {
 				
 				boolean pastaCriada = new File(pathFolder_dataframes).mkdir();		// Cria uma pasta.
@@ -78,7 +78,7 @@ public class A_main {
 		String[] arrayColunas = new String[7];		// Quantidade de colunas do dataframe.
 		int arrayLinhas = 10;						// Quantidade de pessoas que podem ser cadastradas.
 		
-		arrayColunas[0] = "ID";						// Intância de cada coluna do dataframe.
+		arrayColunas[0] = "ID";						// IntÃ¢ncia de cada coluna do dataframe.
 		arrayColunas[1] = "Nome";
 		arrayColunas[2] = "Data de nascimento";
 		arrayColunas[3] = "Estado e Cidade";
@@ -101,9 +101,9 @@ public class A_main {
 				
 				String[] celulasLinha = linhaCsv.split(";");	// Da split em cada linha no passo do while.
 				
-				for (String celula: celulasLinha) {		// A cada laço do for, celula recebe 1 dos valores splitados em celulasLinha.
+				for (String celula: celulasLinha) {		// A cada laÃ§o do for, celula recebe 1 dos valores splitados em celulasLinha.
 					
-					arraySF[lin][col] = celula;			// Esse valor é inserido na posição correspondente no array.
+					arraySF[lin][col] = celula;			// Esse valor Ã© inserido na posiÃ§Ã£o correspondente no array.
 					
 					if (col < (arrayColunas.length) - 1) {
 
@@ -115,13 +115,13 @@ public class A_main {
 						
 					}
 					
-					col++;					// Adciona 1 à col para trocar de coluna.
+					col++;					// Adciona 1 Ã  col para trocar de coluna.
 					
 				}
 				
 				col = 0;					// Reseta o auxiliar do array para a primeira coluna.
-				lin++;						// Pula o auxiliar do array para a próxima linha.
-				linhaCsv = br.readLine();	// Lê a próxima linha.
+				lin++;						// Pula o auxiliar do array para a prÃ³xima linha.
+				linhaCsv = br.readLine();	// LÃª a prÃ³xima linha.
 				
 			}
 			
