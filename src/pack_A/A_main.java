@@ -81,25 +81,23 @@ public class A_main {
 		
 // Colunas e linhas ------------------------------------------------------------------------------------------------------------------------------------------------------------
 		
-		String[] arrayColunas = new String[7];		// Quantidade de colunas do dataframe.
-		int countLinhas = 10;						// Quantidade de pessoas que podem ser cadastradas.
+		String[] arrayTitulos = new String[7];		// Quantidade de colunas do dataframe.
 		
-		arrayColunas[0] = "ID";						// Intância o título de cada coluna do dataframe.
-		arrayColunas[1] = "Nome";
-		arrayColunas[2] = "Data de nascimento";
-		arrayColunas[3] = "Estado, Cidade";
-		arrayColunas[4] = "Telefone";
-		arrayColunas[5] = "Email";
-		arrayColunas[6] = "Github";
-/*
-		ArrayList<String> arraylistId = new ArrayList<String>();		// Instância do arraylist para os valores de cada linha em sua determinada coluna.
-		ArrayList<String> arraylistNome = new ArrayList<String>();
-		ArrayList<String> arraylistNasc = new ArrayList<String>();
-		ArrayList<String> arraylistEnd = new ArrayList<String>();
-		ArrayList<String> arraylistTel = new ArrayList<String>();
-		ArrayList<String> arraylistMail = new ArrayList<String>();
-		ArrayList<String> arraylistGit = new ArrayList<String>();
-		*/
+		arrayTitulos[0] = "ID";						// Intância do título de cada coluna do dataframe.
+		arrayTitulos[1] = "Nome";
+		arrayTitulos[2] = "Data de nascimento";
+		arrayTitulos[3] = "Estado, Cidade";
+		arrayTitulos[4] = "Telefone";
+		arrayTitulos[5] = "Email";
+		arrayTitulos[6] = "Github";
+
+		ArrayList<String> arraylist_0 = new ArrayList<String>();		// Instância do arraylist para os valores de cada linha em sua determinada coluna.
+		ArrayList<String> arraylist_1 = new ArrayList<String>();
+		ArrayList<String> arraylist_2 = new ArrayList<String>();
+		ArrayList<String> arraylist_3 = new ArrayList<String>();
+		ArrayList<String> arraylist_4 = new ArrayList<String>();
+		ArrayList<String> arraylist_5 = new ArrayList<String>();
+		ArrayList<String> arraylist_6 = new ArrayList<String>();
 		
 
 // Abrir o arquivo -------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -107,77 +105,83 @@ public class A_main {
 		try (BufferedReader br = new BufferedReader(new FileReader(pathSourceFile))) {
 
 
-// Mostrar tabela de cadastro (deve sempre rodar apenas 1 vez) -----------------------------------------------------------------------------------------------------------------
+// Inserção do dataframe nos arraylists ----------------------------------------------------------------------------------------------------------------------------------------
 
-			for (String celula: arrayColunas) {
+			int countID = 0;
+			String linhaCsv	= br.readLine();
 
-				if (celula == arrayColunas[arrayColunas.length - 1]) {					// Imprime o cabeçalho do dataframe.
-
-					System.out.println(" | " + String.format("%10s", celula) + " |");	// Se for a última célula.
-					
-				} else if (celula == arrayColunas[2]) {
-
-					System.out.print(" | " + String.format("%18s", celula));			// Se for "Data de nascimento".
-
-				} else {
-											
-					System.out.print(" | " + String.format("%10s", celula));			// Se não for a última célula.
-					
-				}
-
-			}
-
-			String[][] arraySF = new String[arrayColunas.length][countLinhas];
-// **************
-			
-			String	linhaCsv	= br.readLine();
-			int		lin			= 0;
-			int		col			= 0;
-
-			int		countID		= 0;
-
-			while ((linhaCsv != null) && (lin < countLinhas)) {			// (lin < arrayLinhas) pode ser deletado?		// Deve ser rodado 1 vez!!!!!!!!!!!
+			while (linhaCsv != null) {
 
 				String[] celulasLinha = linhaCsv.split(";");	// Da split em cada linha no passo do while.
 				
-				for (String celula: celulasLinha) {		// A cada laço do for, celula recebe 1 dos valores splitados em celulasLinha.
-					
-					arraySF[lin][col] = celula;			// Esse valor é inserido na posição correspondente no array.
-					
-					if (col == 2) {
-
-						System.out.print(" | " + String.format("%18s", arraySF[lin][col]));				// Se for a coluna 3, "Data de nascimento".
-						
-					} else if (col == 3) {
-
-						System.out.print(" | " + String.format("%14s", arraySF[lin][col]));				// Se for a coluna 4, "Estado, Cidade".
-
-					} else if (col < (arrayColunas.length) - 1) {
-
-						System.out.print(" | " + String.format("%10s", arraySF[lin][col]));				// Se não for a última coluna.
-	
-					} else {
-						
-						System.out.println(" | " + String.format("%10s", arraySF[lin][col]) + " |");	// Se for a última coluna.
-						
-					}
-					
-					col++;					// Adciona 1 à col para trocar de coluna.
-					
-				}
+				arraylist_0.add(celulasLinha[0]);
+				arraylist_1.add(celulasLinha[1]);
+				arraylist_2.add(celulasLinha[2]);
+				arraylist_3.add(celulasLinha[3]);
+				arraylist_4.add(celulasLinha[4]);
+				arraylist_5.add(celulasLinha[5]);
+				arraylist_6.add(celulasLinha[6]);
 				
 				countID++;					// Checa o ID da última pessoa cadastrada.
-
-				col = 0;					// Reseta o auxiliar do array para a primeira coluna.
-				lin++;						// Pula o auxiliar do array para a próxima linha.
 				linhaCsv = br.readLine();	// Lê a próxima linha.
 				
 			}
 
+			countID--;		// Diminui 1 quando sai do laço para ficar de acordo com o id do último cadastrado..
 
-// Inserir dados no array ------------------------------------------------------------------------------------------------------------------------------------------------------
-// Index 8 out of bounds for length 7
+// Mostrar tabela de cadastro --------------------------------------------------------------------------------------------------------------------------------------------------
 
+			for (String titulo: arrayTitulos) {											// Imprime o cabeçalho do dataframe.
+
+				if (titulo == arrayTitulos[arrayTitulos.length - 1]) {
+
+					System.out.println(" | " + String.format("%10s", titulo) + " |");	// Se for a última célula.
+					
+				} else {
+											
+					System.out.print(" | " + String.format("%10s", titulo));			// Se não for a última célula.
+					
+				}
+
+			}
+
+			for (int lin = 0; lin <= countID; lin++) {
+
+				for (int col = 0; col < arrayTitulos.length; col++) {
+
+					switch (col) {			// A cada laço da coluna, pega o arraylist especifico e imprime.
+
+						case 0:
+							System.out.print(" | " + String.format("%10s", arraylist_0.get(lin)));
+							break;
+						case 1:
+							System.out.print(" | " + String.format("%10s", arraylist_1.get(lin)));
+							break;
+						case 2:
+							System.out.print(" | " + String.format("%18s", arraylist_2.get(lin)));		// Ajusta o tamanho.
+							break;
+						case 3:
+							System.out.print(" | " + String.format("%14s", arraylist_3.get(lin)));		// Ajusta o tamanho.
+							break;
+						case 4:
+							System.out.print(" | " + String.format("%10s", arraylist_4.get(lin)));
+							break;
+						case 5:
+							System.out.print(" | " + String.format("%10s", arraylist_5.get(lin)));
+							break;
+						case 6:
+							System.out.println(" | " + String.format("%10s", arraylist_6.get(lin)) + " |");
+							break;
+
+					}
+
+				}
+				
+			}
+
+
+// Inserir dados nos arrays ----------------------------------------------------------------------------------------------------------------------------------------------------
+// Erro: Não está lendo o nome.
 			System.out.println("CountID == " + countID);	// Confirmando coundID.
 
 			System.out.println("Adicionar currículo? [0 = Não][1 = Sim]");
@@ -185,52 +189,60 @@ public class A_main {
 
 			if (inserirCurriculo >= 1) {
 
-				if (countID == (countLinhas - 2)) {			// Verifica se a tabela está cheia. // Conto -2 porque sempre deve haver um espaço vazio na tabela, ela nunca pode estar realmente cheia.
+				countID++;			// Gera o ID para mais uma pessoa.
+
+				for (int col = 0; col < arrayTitulos.length; col++) {
 					
-					System.out.println("Tabela cheia! Será adicionado mais um espaço.");		
-					countLinhas++;				// Adiciona +1 à quantidade de linhas no array.
-	
-				}
+					switch (col) {
 
-				countID++;			// Gera o ID para mais uma pessoa. Só funciona se "Mostrar tabela de cadastro" tiver rodado 1 vez.
+						case 0:
+							System.out.println(arrayTitulos[col] + ": " + countID);
+							arraylist_0.add(String.valueOf(countID));				// Insere o ID como string.							
+							break;
+						case 1:
+							System.out.println(arrayTitulos[col] + ": ");			// Mostra o título da coluna.
+							arraylist_1.add(sc.nextLine());							// Lê e insere na coluna determinada.
+							break;
+						case 2:
+							System.out.println(arrayTitulos[col] + ": ");
+							arraylist_2.add(sc.nextLine());
+							break;
+						case 3:
+							System.out.println(arrayTitulos[col] + ": ");
+							arraylist_3.add(sc.nextLine());
+							break;
+						case 4:
+							System.out.println(arrayTitulos[col] + ": ");
+							arraylist_4.add(sc.nextLine());
+							break;
+						case 5:
+							System.out.println(arrayTitulos[col] + ": ");
+							arraylist_5.add(sc.nextLine());
+							break;
+						case 6:
+							System.out.println(arrayTitulos[col] + ": ");
+							arraylist_6.add(sc.nextLine());
+							break;
 
-				arraySF[countID][0] = String.valueOf(countID);			// Insere o ID como string.
-
-				for (col = 1; col < arrayColunas.length; col++) {
-	
-					System.out.printf(arrayColunas[col] + ": ");		// Mostra o título da coluna.
-					arraySF[countID][col] = sc.nextLine();				// Lê e insere na coluna determinada.
+					}
 					
 				}
 
 				inserirCurriculo = 0;		// Reseta inserirCurriculo.
 
 			}
-			
+
 
 // Sobrescrever arquivo com o array --------------------------------------------------------------------------------------------------------------------------------------------
-// Cannot invoke "String.length()" because "<parameter1>" is null
+
 
 			try (BufferedWriter bw = new BufferedWriter(new FileWriter(pathSourceFile))) {		// Função pra escrever no arquivo.
-				// [arrayColunas.length][countLinhas]
-				for (lin = 0; lin <= countID; lin++) {					// 2 for pra acessar as linhas e colunas do array.
 
-					for (col = 0; col < arrayColunas.length; col++) {
+				for (int lin = 0; lin <= countID; lin++) {
 
-						if (col == (arrayColunas.length - 1)){			// Se for a última coluna, não adciona ';'.
-
-							bw.write(arraySF[lin][col]);
-
-						} else {										// Se não for a última coluna, adiciona ';'.
-
-							bw.write(arraySF[lin][col] + ";");
-
-						}
-
-					}
-
-					bw.newLine();										// Quebra a linha dentro do arquivo.
-
+					bw.write(arraylist_0.get(lin) + ";" + arraylist_1.get(lin) + ";" + arraylist_2.get(lin) + ";" + arraylist_3.get(lin) + ";" + arraylist_4.get(lin) + ";" + arraylist_5.get(lin) + ";" + arraylist_6.get(lin));
+					bw.newLine();		// Quebra a linha dentro do arquivo.
+					
 				}
 
 			} catch (Exception e) {
@@ -239,7 +251,7 @@ public class A_main {
 
 			}
 
-// Exceções e fechamento -------------------------------------------------------------------------------------------------------------------------------------------------------
+// Fechamento ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 		} catch (Exception e) {
 			
