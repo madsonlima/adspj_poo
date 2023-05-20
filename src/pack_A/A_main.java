@@ -190,38 +190,35 @@ public class A_main {
 			if (inserirCurriculo >= 1) {
 
 				countID++;			// Gera o ID para mais uma pessoa.
+				arraylist_0.add(String.valueOf(countID));	// Insere o ID como string.		
 
-				for (int col = 0; col < arrayTitulos.length; col++) {
+				for (int col = 1; col < arrayTitulos.length; col++) {
 					
 					switch (col) {
 
-						case 0:
-							System.out.println(arrayTitulos[col] + ": " + countID);
-							arraylist_0.add(String.valueOf(countID));				// Insere o ID como string.							
-							break;
 						case 1:
 							System.out.println(arrayTitulos[col] + ": ");			// Mostra o título da coluna.
-							arraylist_1.add(sc.nextLine());							// Lê e insere na coluna determinada.
+							arraylist_1.add(sc.next());							// Lê e insere na coluna determinada.
 							break;
 						case 2:
 							System.out.println(arrayTitulos[col] + ": ");
-							arraylist_2.add(sc.nextLine());
+							arraylist_2.add(sc.next());
 							break;
 						case 3:
 							System.out.println(arrayTitulos[col] + ": ");
-							arraylist_3.add(sc.nextLine());
+							arraylist_3.add(sc.next());
 							break;
 						case 4:
 							System.out.println(arrayTitulos[col] + ": ");
-							arraylist_4.add(sc.nextLine());
+							arraylist_4.add(sc.next());
 							break;
 						case 5:
 							System.out.println(arrayTitulos[col] + ": ");
-							arraylist_5.add(sc.nextLine());
+							arraylist_5.add(sc.next());
 							break;
 						case 6:
 							System.out.println(arrayTitulos[col] + ": ");
-							arraylist_6.add(sc.nextLine());
+							arraylist_6.add(sc.next());
 							break;
 
 					}
@@ -229,6 +226,94 @@ public class A_main {
 				}
 
 				inserirCurriculo = 0;		// Reseta inserirCurriculo.
+
+			}
+
+
+// Alterar dados nos arrays ----------------------------------------------------------------------------------------------------------------------------------------------------
+
+			System.out.print("Alterar um cadastro? [0 = Não][1 = Sim] ");
+			int alterarCurriculo = sc.nextInt();
+
+			if (alterarCurriculo >= 1) {
+
+				System.out.print("ID do cadastrado: ");
+				String locID = sc.next();
+
+				if (arraylist_0.contains(locID)) {		// Se o ID inserido existir dentro do array.
+
+					int locIndex = arraylist_0.indexOf(locID);	// Posição do ID recebido no array de IDs.
+
+					int locColuna = 999;
+					while (locColuna > 0) {
+						System.out.println("------------------------------\nSelecione uma opção:");
+						System.out.println("[1] Alterar Nome\n[2] Alterar Data de Nascimento\n[3] Alterar Estado, Cidade\n[4] Alterar Telefone\n[5] Alterar Email\n[6] Alterar Github\n[0] Encerrar alterações");
+						locColuna = sc.nextInt();
+
+						String alteracao;
+						switch (locColuna) {
+
+							case 0:
+								locColuna = 0;		// Sai do while.
+								break;
+
+							case 1:
+								System.out.println(arraylist_1.get(locIndex));		// Mostra o valor atual.
+								System.out.print("[Alterando] Nome: ");
+								alteracao = sc.next();
+								arraylist_1.set(locIndex, alteracao);				// Insere a alteração no index específico.
+								System.out.println("Nome alterado com sucesso!");
+								break;
+
+							case 2:
+								System.out.println(arraylist_2.get(locIndex));
+								System.out.print("[Alterando] Data de nascimento: ");
+								alteracao = sc.next();
+								arraylist_2.set(locIndex, alteracao);
+								break;
+
+							case 3:
+								System.out.println(arraylist_3.get(locIndex));
+								System.out.print("[Alterando] Estado, Cidade: ");
+								alteracao = sc.next();
+								arraylist_3.set(locIndex, alteracao);
+								break;
+
+							case 4:
+								System.out.println(arraylist_4.get(locIndex));
+								System.out.print("[Alterando] Telefone: ");
+								alteracao = sc.next();
+								arraylist_4.set(locIndex, alteracao);
+								break;
+
+							case 5:
+								System.out.println(arraylist_5.get(locIndex));
+								System.out.print("[Alterando] Email: ");
+								alteracao = sc.next();
+								arraylist_5.set(locIndex, alteracao);
+								break;
+
+							case 6:
+								System.out.println(arraylist_6.get(locIndex));
+								System.out.print("[Alterando] Github: ");
+								alteracao = sc.next();
+								arraylist_6.set(locIndex, alteracao);
+								break;
+
+							default:
+								System.out.print("Digite uma opção válida!");
+								break;
+								
+						}
+					}
+
+					alterarCurriculo = 0;
+
+				} else {
+
+					System.out.println("ID não localizado.");
+
+				}
 
 			}
 
