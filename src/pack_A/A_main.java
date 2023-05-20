@@ -237,7 +237,7 @@ public class A_main {
 
 			if (alterarCurriculo >= 1) {
 
-				System.out.print("ID do cadastrado: ");
+				System.out.print("[ALTERANDO] ID do cadastrado: ");
 				String locID = sc.next();
 
 				if (arraylist_0.contains(locID)) {		// Se o ID inserido existir dentro do array.
@@ -318,12 +318,56 @@ public class A_main {
 			}
 
 
+// Deletar cadastro ------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+			System.out.print("Deletar um cadastro? [0 = Não][1 = Sim] ");
+			int deletarCurriculo = sc.nextInt();
+			
+			int confirmacao = 0;
+			if (deletarCurriculo >= 1) {
+
+				System.out.print("[DELETANDO] ID do cadastrado: ");
+				String locID = sc.next();
+
+				if (arraylist_0.contains(locID)) {		// Se o ID inserido existir dentro do array.
+
+					System.out.print("[DELETANDO] Deseja realmente apagar os dados deste ID? [0 = Não][1 = Sim] ");
+					confirmacao = sc.nextInt();
+					if (confirmacao >= 1) {
+
+						int locIndex = arraylist_0.indexOf(locID);		// Posição do ID recebido no array de IDs.
+
+						arraylist_0.remove(locIndex);
+						arraylist_1.remove(locIndex);
+						arraylist_2.remove(locIndex);
+						arraylist_3.remove(locIndex);
+						arraylist_4.remove(locIndex);
+						arraylist_5.remove(locIndex);
+						arraylist_6.remove(locIndex);
+
+						System.out.println("Currículo removido com sucesso!");
+
+					} else {
+
+						System.out.println("[DELETANDO] Operação cancelada.");
+
+					}
+
+				} else {
+
+					System.out.println("ID não localizado.");
+
+				}
+
+			}
+
+
 // Sobrescrever arquivo com o array --------------------------------------------------------------------------------------------------------------------------------------------
 
 
 			try (BufferedWriter bw = new BufferedWriter(new FileWriter(pathSourceFile))) {		// Função pra escrever no arquivo.
 
-				for (int lin = 0; lin <= countID; lin++) {
+				for (int lin = 0; lin < arraylist_0.size(); lin++) {
 
 					bw.write(arraylist_0.get(lin) + ";" + arraylist_1.get(lin) + ";" + arraylist_2.get(lin) + ";" + arraylist_3.get(lin) + ";" + arraylist_4.get(lin) + ";" + arraylist_5.get(lin) + ";" + arraylist_6.get(lin));
 					bw.newLine();		// Quebra a linha dentro do arquivo.
