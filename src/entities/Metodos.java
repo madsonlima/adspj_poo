@@ -5,7 +5,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-//import java.lang.Iterable;
+import java.lang.Iterable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -86,23 +86,44 @@ public class Metodos {
 
     }
 
+    // Ferramenta para inserir dados em um ModeloCadastro
+    /*static public ModeloCadastro inserirModelo(String a, String b , String c, String d , String e, String f , String g, String h , String i, String j) {
+        
+
+        ModeloCadastro modeloAtual = new ModeloCadastro();
+
+
+
+        return modelo;
+
+    }*/
+
+    static public ArrayList<ModeloCadastro> inserirModelo(ArrayList<ModeloCadastro> lista, ModeloCadastro modelo) {
+        
+        lista.add(modelo);
+        return lista;
+
+    }
+
+
     // Ler o csv e retornar em um araylist -------------------------------------------------------------------------------------------------------------------------------------
 
     static public ArrayList<ModeloCadastro> arqLerArray() {
 
-        ModeloCadastro modeloAtual = new ModeloCadastro();								// Modelo para receber dados de cadastro.
+        //ModeloCadastro modeloAtual = new ModeloCadastro();							// https://stackoverflow.com/questions/4580728/adding-items-from-a-while-loop-to-an-arraylist-java
         ArrayList<ModeloCadastro> arrayCadastros = new ArrayList<ModeloCadastro>();		// Arraylist para inserção dos cadastros.
 
         try (BufferedReader br = new BufferedReader(new FileReader(pathSourceFile))) {
 
             // Inserção do dataframe nos arraylists ----------------------------------------------------------------------------------------------------------------------------
-            String linhaCsv	= br.readLine();		    		// Lê a primeira linha (títulos).
+            String linhaCsv	= br.readLine();		    	    	// Lê a primeira linha (títulos).
 
-			while (linhaCsv != null) {							// Começa a ler os cadastros.
+			while (linhaCsv != null) {							    // Começa a ler os cadastros.
 
-				String[] celulasLinha = linhaCsv.split(";");	// Da split na linha e põe cada célula em um array.
+				String[] celulasLinha = linhaCsv.split(";");    	// Da split na linha e põe cada célula em um array.
+                ModeloCadastro modeloAtual = new ModeloCadastro();  // Modelo para receber dados de cadastro.
 				
-				modeloAtual.setNome(celulasLinha[0]);			// Seta no cadastro modelo os dados dessa linha.
+				modeloAtual.setNome(celulasLinha[0]);			    // Seta no cadastro modelo os dados dessa linha.
 				modeloAtual.setAno(celulasLinha[1]);
 				modeloAtual.setTelefone(celulasLinha[2]);
 				modeloAtual.setEmail(celulasLinha[3]);

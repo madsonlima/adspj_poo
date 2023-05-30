@@ -20,7 +20,7 @@ public class A_main {
 		Metodos.arqInicializar();
 
 		// Ler o csv e armazenar em um araylist --------------------------------------------------------------------------------------------------------------------------------
-		arrayCadastros = (Metodos.arqLerArray());
+		arrayCadastros = Metodos.arqLerArray();
 
 		// Mostrar tabela de cadastro ------------------------------------------------------------------------------------------------------------------------------------------
 		Metodos.arqMostrarArray(arrayCadastros);
