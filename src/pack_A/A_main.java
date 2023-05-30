@@ -31,7 +31,6 @@ public class A_main {
 		System.out.println(Metodos.ANSI_CYAN + "[SUCESSO] CADASTRO INCLUÍDO: '" + novoCadastro.getNome() + "'\n" + Metodos.ANSI_RESET);
 
 		// Alterar dados de cadastros ------------------------------------------------------------------------------------------------------------------------------------------
-		// acho que talvez tenha que dar clear pra depois inserir de um por um
 		arrayCadastros = Metodos.arqAlterarCadastro(arrayCadastros);
 
 		// Deletar cadastro ----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -39,8 +38,6 @@ public class A_main {
 
 		// Sobrescrever arquivo csv --------------------------------------------------------------------------------------------------------------------------------------------
 		Metodos.arqSobrescrever(arrayCadastros);
-
-
 
 		sc.close();
 

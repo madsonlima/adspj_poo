@@ -5,7 +5,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.lang.Iterable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -158,7 +157,7 @@ public class Metodos {
         for (ModeloCadastro modeloLido: arrayCadastros) {		// Para cada modelo lido em arrayCadastros...
 			
 			System.out.printf(String.format("| %15s |", modeloLido.getNome()));			// Formatando a impressão das stings.
-			System.out.printf(String.format(" %15s |", modeloLido.getAno()));			// www.javatpoint.com/java-string-format
+			System.out.printf(String.format(" %17s |", modeloLido.getAno()));			// www.javatpoint.com/java-string-format
 			System.out.printf(String.format(" %15s |", modeloLido.getTelefone()));
 			System.out.printf(String.format(" %15s |", modeloLido.getEmail()));
 			System.out.printf(String.format(" %15s |", modeloLido.getGithub()));
@@ -166,7 +165,7 @@ public class Metodos {
 			System.out.printf(String.format(" %15s |", modeloLido.getFormacao()));
 			System.out.printf(String.format(" %15s |", modeloLido.getExperiencia()));
 			System.out.printf(String.format(" %15s |", modeloLido.getNivIngles()));
-			System.out.printf(String.format(" %15s |\n", modeloLido.getConhecimentos()));
+			System.out.printf(String.format(" %25s |\n", modeloLido.getConhecimentos()));
 
 		}
 
@@ -179,25 +178,25 @@ public class Metodos {
 		ModeloCadastro modeloAtual = new ModeloCadastro();
 
         System.out.printf("%s: ", Titulos.getNome());
-        modeloAtual.setNome(sc.next());
+        modeloAtual.setNome(sc.nextLine());
         System.out.printf("%s: ", Titulos.getAno());
-        modeloAtual.setAno(sc.next());
+        modeloAtual.setAno(sc.nextLine());
         System.out.printf("%s: ", Titulos.getTelefone());
-        modeloAtual.setTelefone(sc.next());
+        modeloAtual.setTelefone(sc.nextLine());
         System.out.printf("%s: ", Titulos.getEmail());
-        modeloAtual.setEmail(sc.next());
+        modeloAtual.setEmail(sc.nextLine());
         System.out.printf("%s: ", Titulos.getGithub());
-        modeloAtual.setGithub(sc.next());
+        modeloAtual.setGithub(sc.nextLine());
         System.out.printf("%s: ", Titulos.getCidade());
-        modeloAtual.setCidade(sc.next());
+        modeloAtual.setCidade(sc.nextLine());
         System.out.printf("%s: ", Titulos.getFormacao());
-        modeloAtual.setFormacao(sc.next());
+        modeloAtual.setFormacao(sc.nextLine());
         System.out.printf("%s: ", Titulos.getExperiencia());
-        modeloAtual.setExperiencia(sc.next());
+        modeloAtual.setExperiencia(sc.nextLine());
         System.out.printf("%s: ", Titulos.getNivIngles());
-        modeloAtual.setNivIngles(sc.next());
+        modeloAtual.setNivIngles(sc.nextLine());
         System.out.printf("%s: ", Titulos.getConhecimentos());
-        modeloAtual.setConhecimentos(sc.next());
+        modeloAtual.setConhecimentos(sc.nextLine());
 
 		return modeloAtual;
 
@@ -208,7 +207,7 @@ public class Metodos {
     static public ArrayList<ModeloCadastro> arqAlterarCadastro(ArrayList<ModeloCadastro> arrayCadastros) {
 
         System.out.println(ANSI_BLUE + "[ALTERANDO] ALTERAR DADOS DE QUE PESSOA? " + ANSI_RESET);
-        String altObjeto = sc.next();
+        String altObjeto = sc.nextLine();
         int indexObj = 0;       // Auxiliar para detectar o index de modeloAtual em arrayCadastros.
 
         for (ModeloCadastro modeloAtual: arrayCadastros) {
@@ -218,11 +217,13 @@ public class Metodos {
                 System.out.println(ANSI_BLUE + "[ALTERANDO] ALTERAR QUAL DADO? ");
                 System.out.printf("------------------------------\n[1] Nome\n[2] Ano de Nascimento\n[3] Telefone\n[4] Email\n[5] GitHub\n[6] Cidade\n[7] Formação\n[8] Experiência\n[9] Nível de Inglês\n[10] Conhecimentos Específicos\n------------------------------\n" + ANSI_RESET);
                 
-                int altAtributo = sc.nextInt();
+                String w = sc.nextLine();
+                int altAtributo = Integer.valueOf(w);
                 while ((altAtributo < 1) || (altAtributo > 10)) {
 
                     System.out.println(ANSI_RED + "[ERRO] DIGITE UMA OPÇAO VÁLIDA." + ANSI_RESET);
-                    sc.nextInt();
+                    w = sc.nextLine();
+                    altAtributo = Integer.valueOf(w);
 
                 }
 
@@ -230,52 +231,47 @@ public class Metodos {
 
                     case 1:
                         System.out.printf("%s: ", arrayCadastros.get(0).getNome());     // Mostra o primeiro modelo (título).
-                        arrayCadastros.get(indexObj).setNome(sc.next());                // Seta no ModeloCadastro do índice específico do arrayCadastros recebido.
-                        break;
+                        arrayCadastros.get(indexObj).setNome(sc.nextLine());                // Seta no ModeloCadastro do índice específico do arrayCadastros recebido.
+                        return arrayCadastros;
                     case 2:
                         System.out.printf("%s: ", arrayCadastros.get(0).getAno());
-                        arrayCadastros.get(indexObj).setAno(sc.next());
-                        break;
+                        arrayCadastros.get(indexObj).setAno(sc.nextLine());
+                        return arrayCadastros;
                     case 3:
                         System.out.printf("%s: ", arrayCadastros.get(0).getTelefone());
-                        arrayCadastros.get(indexObj).setTelefone(sc.next());
-                        break;
+                        arrayCadastros.get(indexObj).setTelefone(sc.nextLine());
+                        return arrayCadastros;
                     case 4:
                         System.out.printf("%s: ", arrayCadastros.get(0).getEmail());
-                        arrayCadastros.get(indexObj).setEmail(sc.next());
-                        break;
+                        arrayCadastros.get(indexObj).setEmail(sc.nextLine());
+                        return arrayCadastros;
                     case 5:
                         System.out.printf("%s: ", arrayCadastros.get(0).getGithub());
-                        arrayCadastros.get(indexObj).setGithub(sc.next());
-                        break;
+                        arrayCadastros.get(indexObj).setGithub(sc.nextLine());
+                        return arrayCadastros;
                     case 6:
                         System.out.printf("%s: ", arrayCadastros.get(0).getCidade());
-                        arrayCadastros.get(indexObj).setCidade(sc.next());
-                        break;
+                        arrayCadastros.get(indexObj).setCidade(sc.nextLine());
+                        return arrayCadastros;
                     case 7:
                         System.out.printf("%s: ", arrayCadastros.get(0).getFormacao());
-                        arrayCadastros.get(indexObj).setFormacao(sc.next());
-                        break;
+                        arrayCadastros.get(indexObj).setFormacao(sc.nextLine());
+                        return arrayCadastros;
                     case 8:
                         System.out.printf("%s: ", arrayCadastros.get(0).getExperiencia());
-                        arrayCadastros.get(indexObj).setExperiencia(sc.next());
-                        break;
+                        arrayCadastros.get(indexObj).setExperiencia(sc.nextLine());
+                        return arrayCadastros;
                     case 9:
                         System.out.printf("%s: ", arrayCadastros.get(0).getNivIngles());
-                        arrayCadastros.get(indexObj).setNivIngles(sc.next());
-                        break;
+                        arrayCadastros.get(indexObj).setNivIngles(sc.nextLine());
+                        return arrayCadastros;
                     case 10:
                         System.out.printf("%s: ", arrayCadastros.get(0).getConhecimentos());
-                        arrayCadastros.get(indexObj).setConhecimentos(sc.next());
-                        break;
+                        arrayCadastros.get(indexObj).setConhecimentos(sc.nextLine());
+                        return arrayCadastros;
 
                 }
 
-
-            } else {
-
-                System.out.println(ANSI_RED + "[ERRO 04] NÃO HÁ NENHUMA PESSOA CADASTRADA COMO '" + altObjeto + "'.\n" + ANSI_RESET);
-                return arrayCadastros;
 
             }
 
@@ -283,6 +279,7 @@ public class Metodos {
 
         }
 
+        System.out.println(ANSI_RED + "[ERRO 04] NÃO HÁ NENHUMA PESSOA CADASTRADA COMO '" + altObjeto + "'.\n" + ANSI_RESET);
         return arrayCadastros;
 
     }
@@ -292,7 +289,7 @@ public class Metodos {
     static public ArrayList<ModeloCadastro> arqDeletarCadastro(ArrayList<ModeloCadastro> arrayCadastros) {
 
         System.out.println(ANSI_BLUE + "[DELETANDO] DELETAR DADOS DE QUE PESSOA? " + ANSI_RESET);
-        String delObjeto = sc.next();
+        String delObjeto = sc.nextLine();
         int indexObj = 0;       // Auxiliar para detectar o index de modeloAtual em arrayCadastros.
 
         for (ModeloCadastro modeloAtual: arrayCadastros) {
@@ -300,23 +297,22 @@ public class Metodos {
             if (modeloAtual.getNome().contains(delObjeto)) {
 
                 System.out.printf(ANSI_BLUE + "[DELETANDO] DELETAR DADOS DE '%s'? [1=Sim][0=Não] " + ANSI_RESET, modeloAtual.getNome());
-                int delConfirmar = sc.nextInt();
+                
+                String w = sc.nextLine();
+                int delConfirmar = Integer.valueOf(w);
 
                 if (delConfirmar > 0) {
 
                     arrayCadastros.remove(indexObj);
                     System.out.println(ANSI_CYAN + "[SUCESSO] CADASTRO DELETADO." + ANSI_RESET);
+                    return arrayCadastros;
 
                 } else {
 
                     System.out.println(ANSI_CYAN + "[DELETANDO] OPERAÇÃO CANCELADA." + ANSI_RESET);
+                    return arrayCadastros;
 
                 }                
-
-            } else {
-
-                System.out.println(ANSI_RED + "[ERRO 05] NÃO HÁ NENHUMA PESSOA CADASTRADA COMO '" + delObjeto + "'.\n" + ANSI_RESET);
-                return arrayCadastros;
 
             }
 
@@ -324,6 +320,7 @@ public class Metodos {
 
         }
 
+        System.out.println(ANSI_RED + "[ERRO 05] NÃO HÁ NENHUMA PESSOA CADASTRADA COMO '" + delObjeto + "'.\n" + ANSI_RESET);
         return arrayCadastros;
 
     }
