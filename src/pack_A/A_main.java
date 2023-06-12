@@ -27,7 +27,8 @@ public class A_main {
 			String opcao = "";
 			while ((opcao != 1)||(opcao != 2)||(opcao != 3)||(opcao != 4)||(opcao != 5)){
 
-				opcao = System.out.println("Digite a Opção:\n1- Mostrar Cadastros.\n2- Inserir Cadastro.\n3- Alterar Cadastro.\n4- Deletar Cadastro.\n5- Salvar e Sair.\n");
+				System.out.println("Digite a Opção:\n1- Mostrar Cadastros.\n2- Inserir Cadastro.\n3- Alterar Cadastro.\n4- Deletar Cadastro.\n5- Salvar e Sair.\n");
+				opcao = sc.nextLine();
 
 			}
 
