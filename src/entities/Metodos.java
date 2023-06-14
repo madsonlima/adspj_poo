@@ -85,18 +85,6 @@ public class Metodos {
 
     }
 
-    // Ferramenta para inserir dados em um ModeloCadastro
-    /*static public ModeloCadastro inserirModelo(String a, String b , String c, String d , String e, String f , String g, String h , String i, String j) {
-        
-
-        ModeloCadastro modeloAtual = new ModeloCadastro();
-
-
-
-        return modelo;
-
-    }*/
-
     static public ArrayList<ModeloCadastro> inserirModelo(ArrayList<ModeloCadastro> lista, ModeloCadastro modelo) {
         
         lista.add(modelo);
@@ -156,10 +144,10 @@ public class Metodos {
 
         for (ModeloCadastro modeloLido: arrayCadastros) {		// Para cada modelo lido em arrayCadastros...
 			
-			System.out.printf(String.format("| %15s |", modeloLido.getNome()));			// Formatando a impressão das stings.
+			System.out.printf(String.format("| %20s |", modeloLido.getNome()));			// Formatando a impressão das stings.
 			System.out.printf(String.format(" %17s |", modeloLido.getAno()));			// www.javatpoint.com/java-string-format
-			System.out.printf(String.format(" %15s |", modeloLido.getTelefone()));
-			System.out.printf(String.format(" %15s |", modeloLido.getEmail()));
+			System.out.printf(String.format(" %10s |", modeloLido.getTelefone()));
+			System.out.printf(String.format(" %25s |", modeloLido.getEmail()));
 			System.out.printf(String.format(" %15s |", modeloLido.getGithub()));
 			System.out.printf(String.format(" %15s |", modeloLido.getCidade()));
 			System.out.printf(String.format(" %15s |", modeloLido.getFormacao()));

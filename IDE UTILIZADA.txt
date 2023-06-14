@@ -1,0 +1,7 @@
+O código foi desenvolvido diretamente no GitHub pela ferramenta Codespaces.
+
+https://github.com/madsonlima/adspj_poo
+
+Qualquer um, logado no GitHub, pode acessar a página do projeto, ir no botão
+verde "Code" e criar um novo workspace. Com o pacote de extensões "Extension
+Pack for Java" instalado, podemos executar o A_main.java.
